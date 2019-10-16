@@ -89,6 +89,8 @@ NoeudInstRepeter::NoeudInstRepeter(Noeud* condition, Noeud* sequence)
 }
 
 int NoeudInstRepeter::executer() {
-  if (m_condition->executer()) m_sequence->executer();
+  do {
+      m_sequence->executer();
+  } while (!m_condition->executer());
   return 0; // La valeur renvoyée ne représente rien !
 }

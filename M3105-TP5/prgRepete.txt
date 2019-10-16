@@ -1,8 +1,9 @@
 # Fichier de test
 # Les lignes de commentaires commencent par #
 procedure principale()
-Repete
-  i = 12+3;
-jusqua (i >20);
+i = 0;
+repeter
+  i =  i + 3;
+jusqua (i > 20)
 finproc
 # Commentaire Final
