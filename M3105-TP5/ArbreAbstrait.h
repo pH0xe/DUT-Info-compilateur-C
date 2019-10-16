@@ -98,10 +98,11 @@ class NoeudInstSiRiche : public Noeud {
 class NoeudInstRepeter : public Noeud {
 // Classe pour représenter un noeud "instruction Repeter"
     public:
-        NoeudInstRepeter(Noeud* condition);
+        NoeudInstRepeter(Noeud* condition, Noeud* sequence);
      // Construit une "instruction Repeter" avec sa condition et sa séquence d'instruction
         
         ~NoeudInstRepeter() {} 
+        int executer() override; // Exécute l'instruction si : si condition vraie on exécute la séquence
     private:
         Noeud*  m_sequence;
         Noeud*  m_condition;

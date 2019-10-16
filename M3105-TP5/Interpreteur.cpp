@@ -167,3 +167,15 @@ Noeud* Interpreteur::instSiRiche(){
     
 }
 
+Noeud* Interpreteur::instRepeter(){
+//    <instRepeter> ::=repeter <seqInst> jusqua( <expression> )
+  testerEtAvancer("repeter");
+  Noeud* sequence = seqInst();     // On mémorise la séquence d'instruction
+  testerEtAvancer("jusqua");
+  testerEtAvancer("(");
+  Noeud* condition = expression(); // On mémorise la condition
+  testerEtAvancer(")");
+  
+  return new NoeudInstRepeter(condition, sequence);
+ }
+
