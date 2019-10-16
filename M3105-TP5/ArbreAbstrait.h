@@ -86,14 +86,13 @@ class NoeudInstSiRiche : public Noeud {
 // Classe pour représenter un noeud "instruction siRiche"
 //  et ses 2 fils : la condition du siRiche et la séquence d'instruction associée
   public:
-      NoeudInstSi(Noeud* condition, Noeud* sequence);
+      NoeudInstSiRiche(Noeud* condition, Noeud* sequence);
      // Construit une "instruction siRiche" avec sa condition et sa séquence d'instruction
-      ~NoeudInstSi() {} 
+      ~NoeudInstSiRiche() {} 
   private:
     Noeud*  m_condition;
     Noeud*  m_sequence;
 };
-#endif /* ARBREABSTRAIT_H */
 
 ////////////////////////////////////////////////////////////////////////////////
 class NoeudInstRepeter : public Noeud {
@@ -102,8 +101,13 @@ class NoeudInstRepeter : public Noeud {
         NoeudInstRepeter(Noeud* condition);
      // Construit une "instruction Repeter" avec sa condition et sa séquence d'instruction
         
-        ~NoeudInstSi() {} 
+        ~NoeudInstRepeter() {} 
     private:
-    Noeud*  m_sequence;
-    Noeud*  m_condition;
+        Noeud*  m_sequence;
+        Noeud*  m_condition;
 };
+
+
+
+#endif /* ARBREABSTRAIT_H */
+
