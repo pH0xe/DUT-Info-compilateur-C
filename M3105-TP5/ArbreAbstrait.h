@@ -83,18 +83,34 @@ class NoeudInstSi : public Noeud {
 
 ////////////////////////////////////////////////////////////////////////////////
 class NoeudInstTantQue : public Noeud {
-// Classe pour représenter un noeud "instruction si"
+// Classe pour représenter un noeud "instruction Tant que"
 //  et ses 2 fils : la condition du si et la séquence d'instruction associée
   public:
     NoeudInstTantQue(Noeud* condition, Noeud* sequence);
-     // Construit une "instruction si" avec sa condition et sa séquence d'instruction
+     // Construit une "instruction tantque" avec sa condition et sa séquence d'instruction
    ~NoeudInstTantQue() {}         // A cause du destructeur virtuel de la classe Noeud
-    int executer() override; // Exécute l'instruction si : si condition vraie on exécute la séquence
+    int executer() override; // Exécute l'instruction tantque : si condition vraie on exécute la séquence
 
   private:
     Noeud*  m_condition;
     Noeud*  m_sequence;
 };
 
+////////////////////////////////////////////////////////////////////////////////
+class NoeudInstPour : public Noeud {
+// Classe pour représenter un noeud "instruction si"
+//  et ses 2 fils : la condition du si et la séquence d'instruction associée
+  public:
+    NoeudInstPour(Noeud* condition, Noeud* sequence, Noeud* affectation1, Noeud* affectation2);
+     // Construit une "instruction si" avec sa condition et sa séquence d'instruction
+   ~NoeudInstPour() {}         // A cause du destructeur virtuel de la classe Noeudnew NoeudInstPour(condition, sequence);
+    int executer() override; // Exécute l'instruction si : si condition vraie on exécute la séquence
+
+  private:
+    Noeud*  m_condition;
+    Noeud*  m_sequence;
+    Noeud*  m_affectation;
+    Noeud*  m_incrementation;
+};
 
 #endif /* ARBREABSTRAIT_H */

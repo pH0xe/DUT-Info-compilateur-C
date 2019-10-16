@@ -9,16 +9,15 @@
 
 class Interpreteur {
 public:
-	Interpreteur(ifstream & fichier);   // Construit un interpréteur pour interpreter
-	                                    //  le programme dans  fichier 
+    Interpreteur(ifstream & fichier);   // Construit un interpréteur pour interpreter le programme dans  fichier 
                                       
-	void analyse();                     // Si le contenu du fichier est conforme à la grammaire,
-	                                    //   cette méthode se termine normalement et affiche un message "Syntaxe correcte".
-                                      //   la table des symboles (ts) et l'arbre abstrait (arbre) auront été construits
-	                                    // Sinon, une exception sera levée
+    void analyse();                     // Si le contenu du fichier est conforme à la grammaire,
+                                        // cette méthode se termine normalement et affiche un message "Syntaxe correcte".
+                                        // la table des symboles (ts) et l'arbre abstrait (arbre) auront été construits
+	                                // Sinon, une exception sera levée
 
-	inline const TableSymboles & getTable () const  { return m_table;    } // accesseur	
-	inline Noeud* getArbre () const { return m_arbre; }                    // accesseur
+    inline const TableSymboles & getTable () const  { return m_table;    } // accesseur	
+    inline Noeud* getArbre () const { return m_arbre; }                    // accesseur
 	
 private:
     Lecteur        m_lecteur;  // Le lecteur de symboles utilisé pour analyser le fichier
@@ -36,6 +35,7 @@ private:
     Noeud*  instSi();           //      <instSi> ::= si ( <expression> ) <seqInst> finsi
     Noeud*  instSiRiche();      //      <instSiRiche> ::=si(<expression>) <seqInst> {sinonsi(<expression>) <seqInst> }[sinon <seqInst>]finsi
     Noeud*  instTantQue();      //      <instTantQue> ::=tantque( <expression> ) <seqInst> fintantque
+    Noeud* instPour();          //      <instPour>    ::=pour( [ <affectation> ] ; <expression> ;[ <affectation> ]) <seqInst> finpour
 
     // outils pour simplifier l'analyse syntaxique
     void tester (const string & symboleAttendu) const;   // Si symbole courant != symboleAttendu, on lève une exception
