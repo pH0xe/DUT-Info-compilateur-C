@@ -81,6 +81,7 @@ int NoeudInstSi::executer() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 // NoeudInstTantQue
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -109,5 +110,18 @@ int NoeudInstPour::executer() {
         m_sequence->executer();
         if(m_incrementation != nullptr) m_incrementation->executer();
     }
+=======
+// NoeudInstRepteter
+////////////////////////////////////////////////////////////////////////////////
+
+NoeudInstRepeter::NoeudInstRepeter(Noeud* condition, Noeud* sequence)
+: m_condition(condition), m_sequence(sequence) {
+}
+
+int NoeudInstRepeter::executer() {
+  do {
+      m_sequence->executer();
+  } while (!m_condition->executer());
+>>>>>>> theo
   return 0; // La valeur renvoyée ne représente rien !
 }

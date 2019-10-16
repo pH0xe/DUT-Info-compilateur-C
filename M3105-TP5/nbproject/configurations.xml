@@ -18,6 +18,7 @@
       <itemPath>motsCles.txt</itemPath>
       <itemPath>prgPour.txt</itemPath>
       <itemPath>prgTantQue.txt</itemPath>
+      <itemPath>prgRepete.txt</itemPath>
       <itemPath>programme.txt</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
@@ -90,6 +91,7 @@
       <item path="prgPour.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="prgTantQue.txt" ex="false" tool="3" flavor2="0">
+      <item path="prgRepete.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="programme.txt" ex="false" tool="3" flavor2="0">
       </item>
@@ -147,6 +149,7 @@
       <item path="prgPour.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="prgTantQue.txt" ex="false" tool="3" flavor2="0">
+      <item path="prgRepete.txt" ex="false" tool="3" flavor2="0">
       </item>
       <item path="programme.txt" ex="false" tool="3" flavor2="0">
       </item>
