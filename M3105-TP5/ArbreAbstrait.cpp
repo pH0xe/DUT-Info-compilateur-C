@@ -80,6 +80,10 @@ int NoeudInstSi::executer() {
   return 0; // La valeur renvoyée ne représente rien !
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// NoeudInstTantQue
+////////////////////////////////////////////////////////////////////////////////
+
 NoeudInstTantQue::NoeudInstTantQue(Noeud* condition, Noeud* sequence)
 : m_condition(condition), m_sequence(sequence) {
 }
@@ -87,6 +91,23 @@ NoeudInstTantQue::NoeudInstTantQue(Noeud* condition, Noeud* sequence)
 int NoeudInstTantQue::executer() {
     while (m_condition->executer()) {
         m_sequence->executer();
+    }
+  return 0; // La valeur renvoyée ne représente rien !
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// NoeudInstPour
+////////////////////////////////////////////////////////////////////////////////
+
+NoeudInstPour::NoeudInstPour(Noeud* condition, Noeud* sequence, Noeud* affectation1, Noeud* affectation2)
+: m_condition(condition), m_sequence(sequence), m_affectation(affectation1), m_incrementation(affectation2) {
+}
+
+int NoeudInstPour::executer() {
+    if(m_affectation != nullptr) m_affectation->executer();
+    while (m_condition->executer()) {
+        m_sequence->executer();
+        if(m_incrementation != nullptr) m_incrementation->executer();
     }
   return 0; // La valeur renvoyée ne représente rien !
 }

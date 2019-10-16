@@ -56,7 +56,7 @@ Noeud* Interpreteur::seqInst() {
   NoeudSeqInst* sequence = new NoeudSeqInst();
   do {
     sequence->ajoute(inst());
-  } while (m_lecteur.getSymbole() == "<VARIABLE>" || m_lecteur.getSymbole() == "si" || m_lecteur.getSymbole() == "tantque");
+  } while (m_lecteur.getSymbole() == "<VARIABLE>" || m_lecteur.getSymbole() == "si" || m_lecteur.getSymbole() == "tantque" || m_lecteur.getSymbole() == "pour");
   // Tant que le symbole courant est un début possible d'instruction...
   // Il faut compléter cette condition chaque fois qu'on rajoute une nouvelle instruction
   return sequence;
@@ -73,6 +73,8 @@ Noeud* Interpreteur::inst() {
     return instSiRiche();
   else if (m_lecteur.getSymbole() == "tantque")
       return instTantQue();
+  else if (m_lecteur.getSymbole() == "pour")
+      return instPour();
 //  return instSi();
   // Compléter les alternatives chaque fois qu'on rajoute une nouvelle instruction
   else {
@@ -180,3 +182,26 @@ Noeud* Interpreteur::instTantQue(){
     
     return new NoeudInstTantQue(condition, sequence);
 }
+
+Noeud* Interpreteur::instPour(){
+    //      <instPour>    ::=pour( [ <affectation> ] ; <expression> ;[ <affectation> ]) <seqInst> finpour
+    Noeud* affectation2;
+    Noeud* affectation1;
+    testerEtAvancer("pour");
+    testerEtAvancer("(");
+    if(m_lecteur.getSymbole() != ";"){
+        affectation1 = affectation();
+    } else affectation1 = nullptr;
+    testerEtAvancer(";");
+    Noeud* condition = expression();
+    testerEtAvancer(";");
+    if(m_lecteur.getSymbole() != ")"){
+         affectation2 = affectation();
+    } else affectation2 = nullptr;
+    testerEtAvancer(")");
+    Noeud* sequence = seqInst();
+    testerEtAvancer("finpour");
+    
+    return new NoeudInstPour(condition, sequence, affectation1, affectation2);
+//    return nullptr;
+}          
