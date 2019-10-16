@@ -203,5 +203,4 @@ Noeud* Interpreteur::instPour(){
     testerEtAvancer("finpour");
     
     return new NoeudInstPour(condition, sequence, affectation1, affectation2);
-//    return nullptr;
 }          
